@@ -114,9 +114,7 @@ Come risultato dovresti ottenere qualcosa di simile: ["Luke Skywalker", "C-3PO",
 */
 /*
 for(let i = 0; i < starWarsCharacters.length; i++) {
-  const nome = starWarsCharacters[i]
-
-  characters.push(nome.name)
+  characters.push(starWarsCharacters[i].name)
 }
 
 console.log(characters)
@@ -130,8 +128,7 @@ console.log(characters)
 let femaleCharacters = []
 
 for(let i = 0; i < starWarsCharacters.length; i++) {
-  let female = starWarsCharacters[i]
-  let femGen = female.gender
+  let femGen = starWarsCharacters[i].gender
   
   switch (femGen){
     case "female":
@@ -140,7 +137,23 @@ for(let i = 0; i < starWarsCharacters.length; i++) {
 }
 
 console.log(femaleCharacters)
+*/
+//SECONDO METODO
 
+let femaleCharacters = []
+
+for(let i = 0; i < starWarsCharacters.length; i++) {
+  if (starWarsCharacters[i].gender === "female") {
+    delete starWarsCharacters[i].height
+    delete starWarsCharacters[i].mass
+    delete starWarsCharacters[i].skin_color
+    delete starWarsCharacters[i].birth_year
+    delete starWarsCharacters[i].gender
+    femaleCharacters.push(starWarsCharacters[i])
+    
+  }
+}
+console.log(femaleCharacters)
 /* ESERCIZIO 4
   Crea un oggetto "eyeColor" che abbia come proprietà: blue, yellow, brown, red, blue-gray.
   ognuna di queste proprietà contiene un array vuoto
@@ -162,28 +175,29 @@ console.log(eyeColor)
 */
 /*
 for (let i = 0; i < starWarsCharacters.length; i++) {
-  let personaggio = starWarsCharacters[i]
-  let coloreOcchi = personaggio.eye_color
+  let coloreOcchi = starWarsCharacters[i].eye_color
 
   switch (coloreOcchi) {
     case "blue":
-      eyeColor.blue.push(personaggio);
+      eyeColor.blue.push(starWarsCharacters[i]);
     break
     case "yellow":
-      eyeColor.yellow.push(personaggio);
+      eyeColor.yellow.push(starWarsCharacters[i]);
     break;
     case "brown":
-      eyeColor.brown.push(personaggio);
+      eyeColor.brown.push(starWarsCharacters[i]);
     break;
     case "red":
-      eyeColor.red.push(personaggio);
+      eyeColor.red.push(starWarsCharacters[i]);
     break;
     case "red":
-      eyeColor.red.push(personaggio);
+      eyeColor.red.push(starWarsCharacters[i]);
     break;
     case "blue-gray":
-      eyeColor["blue-gray"].push(personaggio);
+      eyeColor["blue-gray"].push(starWarsCharacters[i]);
     break
+    default:
+      console.log(starWarsCharacters[i].name + " non ha gli occhi")
 
   }
 }
@@ -197,9 +211,8 @@ console.log(eyeColor)
 let num = 0
 let massaTotale = 0
 
-while(num < starWarsCharacters.length) {
-  let personaggio = starWarsCharacters[num]
-  let massaPersonaggio = personaggio.mass
+while(num < starWarsCharacters.length) { 
+  let massaPersonaggio = starWarsCharacters[num].mass
   massaTotale += parseInt(massaPersonaggio)
   num++
 }
@@ -211,6 +224,8 @@ console.log(massaTotale)
 Crea uno switch statement per rivelare la tipologia di carico, utilizzando la massa totale, di un'ipotetica astronave contenente i personaggi dell'array "starWarsCharacters"
 (cerca su un motore di ricerca switch case e conditionals)
 
+
+
 Se la massa è inferiore a 500 stampa in console: "Ship is under loaded",
 Se la massa è uguale a 500 stampa in console: "Ship is half loaded",
 Se la massa è superiore a 700 stampa in console: "Warning: Load is over 700",
@@ -219,6 +234,29 @@ Se la massa è superiore a 1000 stampa in console: "DANGER! OVERLOAD ALERT: Jump
 
 Una volta fatto, modifica la massa di qualche elemento dell'equipaggio e vedi se riesci ad ottenere un messaggio diverso.
 */
+/*
+switch (true) {
+  case massaTotale < 500:
+    console.log("Ship is under loaded")
+    break;
+  case massaTotale === 500:
+    console.log("Ship is half loaded")
+    break;
+  case massaTotale > 700:
+    console.log("Warning: Load is over 700")
+    break;
+  case massaTotale > 900:
+    console.log("Critical Load: Over 900")
+    break;
+  case massaTotale > 1000:
+    console.log("DANGER! OVERLOAD ALERT: Jump ship now!")
+    break;
+
+} 
+*/
+
+
+
 
 /* ESERCIZIO 8
 
@@ -227,41 +265,45 @@ Usa un for loop per cambiare il valore della proprietà "gender" di alcuni perso
 /*
 let genderRobot = []
 
-for (i=0; i < starWarsCharacters; i++) {
-  let personaggio = starWarsCharacters[i]
-  if (personaggio.gender === n/a) {
-    personaggio.gender = "robot";
-  }
-  else{
-    personaggio.gender = personaggio.gender
-
-  }
-  genderRobot.push(personaggio)
-}
-
-console.log(genderRobot)
-/*
-for (i=0; i < starWarsCharacters; i++) {
-  if (starWarsCharacters[i].gender === n/a){
+for (i = 0; i < starWarsCharacters.length; i++) {
+  if (starWarsCharacters[i].gender === "n/a") {
     starWarsCharacters[i].gender = "robot";
+    genderRobot.push(starWarsCharacters[i])
   }
-  else {
-
-  }
-
 }
-console.log(starWarsCharacters)
-console.log(starWarsCharacters[2].gender)
+console.log(genderRobot)
+
+
+
+
 
 /* EXTRA ESERCIZIO 9
 
-Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti a personaggi con lo stesso nome"
+Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti
+ a personaggi con lo stesso nome"
 Usa uno più for loop per raggiungere il risultato
 
 (tip: cerca un metodo degli array per rimuovere un elemento)
 
 Una volta fatto, crea un console.log() per controllare la proprietà length di "characters" prima e dopo l'operazione
 */
+/*  NON FUNZIONA
+let  starWarsNoFemaleCharacters = []
+
+for (i = 0; i < femaleCharacters.length; i++) {
+  let female = femaleCharacters[i].name
+  for (i = 0; i < starWarsCharacters.length; i++) {
+    if(starWarsCharacters.name === female.name) {
+      delete starWarsCharacters[i]
+    }
+    else {
+      starWarsNoFemaleCharacters.push(starWarsCharacters[i])
+    }
+  }
+  
+}
+
+console.log(starWarsNoFemaleCharacters)
 
 
 
@@ -269,3 +311,6 @@ Una volta fatto, crea un console.log() per controllare la proprietà length di "
 
 Crea una funzionalità che prenda un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo
 */
+console.log(starWarsCharacters[Math.round(Math.random() * 10)])
+
+
