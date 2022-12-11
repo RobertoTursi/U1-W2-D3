@@ -140,6 +140,7 @@ console.log(femaleCharacters)
 */
 //SECONDO METODO
 
+
 let femaleCharacters = []
 
 for(let i = 0; i < starWarsCharacters.length; i++) {
@@ -154,6 +155,8 @@ for(let i = 0; i < starWarsCharacters.length; i++) {
   }
 }
 console.log(femaleCharacters)
+
+
 /* ESERCIZIO 4
   Crea un oggetto "eyeColor" che abbia come proprietà: blue, yellow, brown, red, blue-gray.
   ognuna di queste proprietà contiene un array vuoto
@@ -219,6 +222,8 @@ while(num < starWarsCharacters.length) {
 
 console.log(massaTotale)
 
+*/
+
 /* ESERCIZIO 7
 
 Crea uno switch statement per rivelare la tipologia di carico, utilizzando la massa totale, di un'ipotetica astronave contenente i personaggi dell'array "starWarsCharacters"
@@ -234,7 +239,9 @@ Se la massa è superiore a 1000 stampa in console: "DANGER! OVERLOAD ALERT: Jump
 
 Una volta fatto, modifica la massa di qualche elemento dell'equipaggio e vedi se riesci ad ottenere un messaggio diverso.
 */
+
 /*
+
 switch (true) {
   case massaTotale < 500:
     console.log("Ship is under loaded")
@@ -242,21 +249,22 @@ switch (true) {
   case massaTotale === 500:
     console.log("Ship is half loaded")
     break;
-  case massaTotale > 700:
-    console.log("Warning: Load is over 700")
+  case massaTotale > 1000:
+    console.log("DANGER! OVERLOAD ALERT: Jump ship now!")
     break;
   case massaTotale > 900:
     console.log("Critical Load: Over 900")
     break;
-  case massaTotale > 1000:
-    console.log("DANGER! OVERLOAD ALERT: Jump ship now!")
+  case massaTotale > 700:
+    console.log("Warning: Load is over 700")
     break;
+  
 
+ 
+  
 } 
+
 */
-
-
-
 
 /* ESERCIZIO 8
 
@@ -287,23 +295,24 @@ Usa uno più for loop per raggiungere il risultato
 
 Una volta fatto, crea un console.log() per controllare la proprietà length di "characters" prima e dopo l'operazione
 */
-/*  NON FUNZIONA
-let  starWarsNoFemaleCharacters = []
 
-for (i = 0; i < femaleCharacters.length; i++) {
-  let female = femaleCharacters[i].name
+console.log(starWarsCharacters)
+
+for (j = 0; j < femaleCharacters.length; j++) {
+  let female = femaleCharacters[j].name
   for (i = 0; i < starWarsCharacters.length; i++) {
-    if(starWarsCharacters.name === female.name) {
-      delete starWarsCharacters[i]
+    let controlName = starWarsCharacters[i].name
+    if(controlName === female) {
+      let characterIndex = starWarsCharacters.indexOf(starWarsCharacters[i])
+      starWarsCharacters.splice(characterIndex, 1)
     }
-    else {
-      starWarsNoFemaleCharacters.push(starWarsCharacters[i])
+    
     }
   }
   
-}
 
-console.log(starWarsNoFemaleCharacters)
+
+console.log(starWarsCharacters)
 
 
 
@@ -311,6 +320,8 @@ console.log(starWarsNoFemaleCharacters)
 
 Crea una funzionalità che prenda un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo
 */
+
+/*
 console.log(starWarsCharacters[Math.round(Math.random() * 10)])
 
-
+*/
